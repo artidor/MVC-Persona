@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PruebaMichael.Models.persona>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado Personas</h2>
+
+<p>
+    @Html.ActionLink("Crear Persona", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+         Nombre
+        </th>
+        <th>
+           Fecha Nacimiento
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.Nombre
+        </td>
+        <td>
+            @item.FechaNacimiento.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
